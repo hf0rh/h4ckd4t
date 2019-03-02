@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php
+session_start();
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+?>
+
 <html>
 <head>
 	<title>Successful Login!</title>
@@ -6,10 +10,7 @@
 <body>
 
 
-<?php
-session_start();
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-?>
+
 
 <p>hello</p>
 <!-- <button onclick="getLocation()">Try It</button>
@@ -30,9 +31,9 @@ function showPosition(position) {
 	"<br>Longitude: " + position.coords.longitude;
 }
 </script> -->
+</body>
+</html>
 
 <?php
 }
 ?>
-</body>
-</html>
