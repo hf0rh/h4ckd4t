@@ -32,7 +32,7 @@ function getLocation() {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(showPosition);
 	} else { 
-		window.open("https://kfenole.com/h4h/sendAlert.php?latitude=0&longitude=0","_self");
+		window.open("https://kfenole.com/h4h/sendAlert.php?latitude=0.0&longitude=0.0","_self");
 	}
 }
 function showPosition(position) {
