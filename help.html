@@ -17,32 +17,33 @@
 	padding:5px;
 	text-decoration:none;
 	background-color:aqua;
+	font-size:45px
 }
 .returnButton:hover { color:aqua;background-color:black;border: 2px solid aqua; }
 </style>
 
-<center><header class="title"><h1>Reach out!</h1></header></center>
-<input type="hidden" name="userlatitude" id="latitude" /><input type="hidden" name="userlongitude" id="longitude" />
-<p><b>RESPONDERS NEAR YOU:</b></p>
-<!-- display location/contact info from database here -->
-<!-- OR =>> SEND AUTO EMAIL AND DISPLAY SAID EMAIL/CPR PERSON'S LOCATION ONCE SUCCESSFULLY RETRIEVED FROM DATABASE -->
+<center><header class="title"><h1>Enter Your Location to Get Help!</h1></header></center>
+<div id="autoForm"></div>
 
-<br><center><p><a class="returnButton material-icons" style="font-size:45px" href="https://hf0rh.github.io/index.html">&#xe88a;</a></p></center>
+<br><center><p><a class="returnButton material-icons" href="https://hf0rh.github.io/index.html">&#xe88a;</a></p></center>
 
 </body>
 <script>
-var userLatitude = document.getElementById("latitude");
-var userLongitude = document.getElementById("longitude");
 function getLocation() {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(showPosition);
 	} else { 
-		userLatitude.value = userLongitude.value = 0;
+		// document.getElementById("autoForm").innerHTML='<form method="post" action="https://kfenole.com/h4h/sendAlert.php?latitude=*&longitude=*" enctype="multipart/form-data">'+
+		// '<input type="hidden" name="userlatitude" id="latitude" value="0" /><input type="hidden" name="userlongitude" id="longitude" value="0" />'+
+		// '<input type="submit" /></form>';
+		alert("well fuck you then");
 	}
 }
 function showPosition(position) {
-	userLatitude.value = position.coords.latitude;
-	userLongitude.value = position.coords.longitude;
+	document.getElementById("autoForm").innerHTML='<form method="post" action="https://kfenole.com/h4h/sendAlert.php?latitude=*&longitude=*" enctype="multipart/form-data">'+
+		'<input type="hidden" name="userlatitude" id="latitude" value="'+position.coords.latitude+'" />'+
+		'<input type="hidden" name="userlongitude" id="longitude" value="'+position.coords.longitude+'" />'+
+		'<input type="submit" /></form>';
 }
 </script>
 </html>
