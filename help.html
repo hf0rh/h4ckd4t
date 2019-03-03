@@ -23,7 +23,6 @@
 </style>
 
 <center><header class="title"><h1>Enter Your Location to Get Help!</h1></header></center>
-<div id="autoForm"></div>
 
 <br><center><p><a class="returnButton material-icons" href="https://hf0rh.github.io/index.html">&#xe88a;</a></p></center>
 
@@ -33,20 +32,11 @@ function getLocation() {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(showPosition);
 	} else { 
-		document.getElementById("autoForm").innerHTML='<form method="post" id="formName" action="https://kfenole.com/h4h/sendAlert.php?latitude=*&longitude=*" '+
-			'enctype="multipart/form-data"><input type="hidden" name="userlatitude" id="latitude" value="0" />'+
-			'<input type="hidden" name="userlongitude" id="longitude" value="0" /><input type="submit" style="visibility:hidden;" /></form>';
-		document.getElementById('formName').submit();
-
+		window.open("https://kfenole.com/h4h/sendAlert.php?latitude=0&longitude=0","_self");
 	}
 }
 function showPosition(position) {
-	document.getElementById("autoForm").innerHTML='<form method="post" id="formName" action="https://kfenole.com/h4h/sendAlert.php?latitude=*&longitude=*" '+
-		'enctype="multipart/form-data"><input type="hidden" name="userlatitude" id="latitude" value="'+position.coords.latitude+'" />'+
-		'<input type="hidden" name="userlongitude" id="longitude" value="'+position.coords.longitude+'" />'+
-		'<input type="submit" style="visibility:hidden;" /></form>';
-	document.getElementById('formName').submit();
-
+	window.open("https://kfenole.com/h4h/sendAlert.php?latitude="+position.coords.latitude+"&longitude="+position.coords.longitude+"","_self");
 }
 </script>
 </html>
